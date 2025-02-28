@@ -94,3 +94,18 @@ test("Login with an empty email field", async ({ page }) => {
   const errorText = await errorMessage.innerText();
   expect(errorText).to.equal("Invalid Email.");
 });
+
+test("Login with an empty email field", async ({ page }) => {
+  await page.goto("https://quire.io/");
+  await page.click("li.item.login a");
+
+  await page.fill("#s_username", "");
+  await page.click("button.cont-button.b.green.full-btn");
+
+  const errorMessage = page.locator(".error-header.hasError");
+  const isErrorVisible = await errorMessage.isVisible();
+  assert.isTrue(isErrorVisible, "Error message should be visible");
+
+  const errorText = await errorMessage.innerText();
+  expect(errorText).to.equal("Invalid Email.");
+});
