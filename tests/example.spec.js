@@ -108,4 +108,6 @@ test("Login with an empty email field", async ({ page }) => {
 
   const errorText = await errorMessage.innerText();
   expect(errorText).to.equal("Invalid Email.");
+  const errorText = await errorMessage.innerText();
+  expect(errorText).to.equal("Invalid Email.");
 });
